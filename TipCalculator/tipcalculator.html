@@ -1,0 +1,33 @@
+<html>
+<head>
+ <link rel="stylesheet" type="text/css" href="theme.css">
+ <script type="text/javascript" src="tip.js"></script>
+</head>
+<div id="Box"><h1>Tip Calculator</h1>
+  <div id="calculator">
+
+    <form>
+      <p> What is the bill?</p>
+      <input type="text" placeholder="Bill amount in Rupees" id="billamt">
+      <p>Rate the Service</p>
+      <select class="Dropdown" id="serviceQual">
+      <option disabled selected value="0">-- Choose the ★ --</option>
+        <option value="0.3">★★★★</option>
+        <option value="0.2">★★★</option>
+        <option value="0.1">★★</option>
+        <option value="0.05">★</option>
+      </select>
+      <p> Number of People sharing the bill</p>
+      <input type="text" placeholder="Numbers only" id="peopleamt">
+      </select>
+      <button type="button" id="calculate">Calculate Tip</button>
+  </div>
+  <!--calculator end-->
+  <div id="totalTip">
+    Rs<span id="tip">0.00</span>
+    <small id="each">/person</small>
+  </div>
+  <!--totalTip end-->
+
+</div>
+</html>
