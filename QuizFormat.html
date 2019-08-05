@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Quiz Format</title>
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Product+Sans');
+body{
+  font-family:Product Sans;
+  text-align:center;
+}
+#Heading{
+  font-size:5vw;
+  border-top:0.5vw;
+  border-bottom:0;
+  border-style:solid;
+  border-left:0;
+  border-right:0;
+  background-color:lightgrey;
+}
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: relative;
+    left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #F87DA9;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+</style>
+<body>
+<div id="Heading"><p>This is Quiz</p></div>
+<div class="Question 1" >
+  <form>
+<p> How many states in India?</p>
+  <p>
+  <input type="radio" id="test1" value="28" name="states" > 
+    <label for="test1">28</label></input>
+  <input type="radio" id="test2" value="29" name="states"> <label for="test2">29</label></input>
+<input type="radio" id="test3" value="27" name="states"><label for="test3">27</label></input>
+</p>
+</form>
+</div>
+<button id="submit" >Submit the Answer</button>
+<script type="text/javascript">
+	function getName(name){
+  let radioButtons = document.getElementsByName(name);
+  for(let i=0; i<radioButtons.length;i++){
+    if(radioButtons[i].checked){ return radioButtons[i].value;
+  }
+  return '';
+}}
+function getValues(){
+  let answer=getName('states');
+  let an= document.getElementById('test2').value;
+  if (answer==an){
+    alert("yes");
+  }
+  else{
+    alert("No");}
+}
+document.getElementById("submit").onclick=function(){
+  getValues();
+};
+</script>
+</body>
+</html>
