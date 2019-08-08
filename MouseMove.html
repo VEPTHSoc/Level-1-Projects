@@ -1,0 +1,85 @@
+<html>
+  <head>
+     <meta charset="utf-8">
+     <style type="text/css">body,html{
+  margin:0;
+  padding:0;
+}
+#container{
+  border: 1px solid black;
+  width:50%;
+  height:90%;
+  padding:10px;
+  margin-bottom:5px;
+  box-sizing:border-box;
+}
+#log {
+  height: 120px;
+  width: 350px;
+  display: block;
+  box-sizing: border-box;
+}
+.smiley{
+  display:inline-block;
+  width:80px;
+  height:70px;
+  border-radius:50%;
+  background: lightgreen;
+  border: 5px solid darkgreen;
+}
+.left-eye{
+  position:relative;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:darkgreen;
+  left:15px;
+  top:20px;
+}
+.right-eye{
+  position:relative;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:darkgreen;
+  left:55px;
+  top:10px;
+}
+.smile{
+  position:relative;
+  width:20px;
+  height:10px;
+  background: darkgreen;
+  top:35px;
+  left:30px;
+}</style>
+  </head>
+  <body>
+    <div id="container">
+      <div class="smiley">
+        <div class="left-eye"></div>
+        <div class="right-eye"></div>
+        <div class="smile"></div>
+      </div>
+    </div>
+    <textarea id="log"></textarea>
+    <script type="text/javascript">
+      container.onmouseover = container.onmouseout = handler;
+function handler(event){
+  function str(el){
+    if(!el) return "null"
+    return el.className||el.tagName;
+  }
+  log.value +=event.type +':' + 'target=' + str(event.target) + ', relatedTarget=' + str(event.relatedTarget) +"\n";
+
+
+  log.scrollTop = log.scrollHeight;
+if(event.type == 'mouseover'){
+  event.target.style.background = 'pink';
+}
+if(event.type == 'mouseout'){
+  event.target.style.background='';
+}}
+    </script>
+  </body>
+</html>
