@@ -1,0 +1,113 @@
+<html>
+<head>
+  <title>
+    Flip Card
+  </title>
+  <style>body {
+  font-family: Arial, Helvetica, sans-serif;
+  
+}
+.flip-card{
+ width:300px;
+ height:300px;
+ perspective:1000px;
+ background:transparent;
+}
+.flip-card-inner{
+ display:block;
+ margin-left:30vw;
+ margin-top:6vw;
+ position:relative;
+ width:100%;
+ height:100%;
+ text-align:center;
+ transition: transform 0.7s;
+ transform-style:preserve-3d;
+ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+ background:linear-gradient(#ff4b1f,#ff9068); 
+}
+.flip-card .flip-card-back.flipped{
+ -webkit-transform: rotatex(180deg);
+}
+
+.flip-card-front, .flip-card-back{
+ position:absolute;
+ width:100%;
+ height:100%;
+ backface-visibility: hidden;
+}
+.flip-card-front{
+background-color: #;
+ color:black;
+}
+.flip-card-back{
+ transform-style:preserve-3d;
+ background-color: #2980b9 ;
+ color: white;
+ transition: transform 0.7s;
+ transform:rotateY(180deg);
+}
+#flipCard{
+ border:solid black;
+ border-radius: 10px;
+
+ position:relative;
+ top: 6vw;
+ background: white;
+ cursor:pointer;
+}
+.invalid { border-color: red; }
+  #error { color: red }
+</style>
+</head>
+<body>
+  <
+<div class="flip-card" id="main">
+ <div class="flip-card-inner" id="main2">
+  <div class="flip-card-front">
+    <div class="tenor-gif-embed" data-postid="4135408" data-share-method="host" data-width="100%" data-aspect-ratio="1.8582089552238805">
+      <a href="https://tenor.com/view/sex-gif-4135408">Ted Humps GIF</a> from <a href="https://tenor.com/search/sex-gifs">Sex GIFs</a>
+    </div>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+   <br><p>
+   Enter your ID:
+   <input type="number" id="input"></input>
+  <div id="error"></div>
+   <br> <button id="flipCard" onclick="flipCard()"> Next</button>
+  </div>
+  <div class="flip-card-back" id="main3">
+   <h1>About Me</h1>
+   <p> This is Ted
+    <br>he is an awesome teddy bear</p>
+   <button id="Flip" onclick="flipCard()">Flip</button>
+  </div>
+ </div>
+</div>
+<script type="text/javascript">function flipCard(){
+ let img2=document.getElementById("main2");
+ img2.style.transform='rotateY(180deg)';
+}
+input.onblur=function(){
+ if(!input.value.includes("12345")){
+  input.classList.add('invalid');
+  error.innerHTML= 'Please enter a correct ID'
+ 
+ }
+}
+
+input.onfocus=function(){
+ if(this.classList.contains('invalid')){
+  this.classList.remove('invalid');
+  error.innerHTML="";
+ }
+}
+
+function validate(){
+ let bt = document.getElementById('flipCard');
+ if(!input.value.includes("12345")){
+  bt.disabled=false;
+ }
+ else{
+  bt.disabled=true;
+ }
+}</script>
