@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css?family=Product+Sans');
+
+body{
+  text-align: center;
+  margin-top:60px;
+  display:block;
+  font-family: Product sans;
+  font-weight: 500;
+}
+
+#container{
+  padding: 5px;
+  display:none;
+  position:fixed;
+  left: 350px;
+}
+
+input{
+  border-bottom: 1px solid  #f0f3f4;
+  border-left:0;
+  border-right:0;
+  border-top:0;
+  color:grey;
+}
+#login{
+  height:40px;
+  width:60px;
+  background: green;
+  color: white;
+  font-weight: 500;
+}
+#show{
+  background:transparent;
+  border:0;
+  z-index:1;
+  position:relative;
+  left:85px; 
+  cursor:pointer;
+}
+#password{
+  position:absolute;
+  right:3.5px;
+}
+#register{
+  height:40px;
+  color:white;
+  font-weight:500;
+  background: red;
+}
+input:focus{
+  background: #f0f3f4 ;
+  transition: 0.6s;
+  border-bottom:1px solid black;
+  color:black;
+}
+#registration{
+  display:block;
+}
+	</style>
+</head>
+<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<input type="button" id="register" value="Register"></input>
+<input type="button" id="login" value="Login"></input>
+
+<br><br>
+<div id="container">
+<p> Username</p>
+<input type="text" placeholder="Enter the username"></input><br>
+<p>Password</p>
+<input type="password" placeholder="Enter the password" id="password"></input>
+<button id="show"> Show</button>
+  </div>
+
+</div>
+<div id="registration">
+  <p>Name</p>
+  <input id="name" type="text" placeholder="Write your name"></input>
+<p> E-mail</p>
+<input id="email" type="email" placeholder="Enter your email"></input>
+<p>Password</p>
+<input id="password2" type="password" placeholder="Password"></input>
+<p> Re-enter password</p>
+<input id="password3" type="password" placeholder="Re-enter the password"></input>
+</div>
+
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+  $("#login").click(function(){
+    $("#container").fadeToggle("1000");
+  });
+});
+document.getElementById("show").onclick=
+document.getElementById("").type="text";
+document.getElementById("login").onclick=document.getElementById("registration").style.display="none";
+
+$(document).ready(function(){
+  $("#register").click(function(){ $("#registration").fladeToggle("1000");
+  });
+});
+
+</script>
+</html>
