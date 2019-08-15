@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css?family=Product+Sans');
+body{
+  text-align:center;
+  margin-top:50px;
+  font-family: Product Sans;
+}
+#registration{
+  display:none;
+}
+#login-form{
+  display:none;
+}
+#heading{
+  color: black;
+  font-size: 5vw;
+  -webkit-text-fill-color:  #f0f3f4 ; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+	</style>
+</head>
+<body>
+<p id="heading"> Click on any Button to open or close</p>
+<button id="register" value="register">Register</button>
+
+<div id="registration">
+  <p>Name</p>
+  <input type="text" placeholder="Enter your full name"></input>
+<p> E-mail</p>
+<input type="email" placeholder="Enter your email"></input>
+<p> Password</p>
+<input type="password" placeholder="Password you want to set" id="password1"></input>
+<p>Re-enter the password</p>
+<input type="password" placeholder="Re-enter your password" id="password2"></input>
+</div>
+<button id="login" value="Login">Login</button>
+<div id="login-form">
+  <p>E-mail ID</p>
+  <input placeholder="Enter your E-mail ID" type="text" id="email1"></input>
+<p>Password</p>
+<input type="password" id="password3" placeholder="Enter your password">
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+  $("#register").click(function(){
+    $("#registration").fadeToggle("1000");
+  });
+});
+$(document).ready(function(){
+  $("#login").click(function(){
+    $("#login-form").fadeToggle("1000");
+  });
+});
+</script>
+</body>
+</html>
