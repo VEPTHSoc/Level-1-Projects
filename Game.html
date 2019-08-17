@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		body{
+  width:100vw;
+  height:100vh;
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background:linear-gradient(#DA22FF,#9733EE);
+  overflow:hidden;
+}
+#main-container{
+  position:relative;
+  width: 50%;
+  height: 50%;
+  background: #222632;
+  box-shadow: 0px 0px 7px 0px;
+  border-radius: 15px;
+  overflow:hidden;
+  border-top: solid red 0px;
+  border-bottom: solid red 0px;
+  border-left: solid red 0px;
+  border-right: solid red 0px;
+  transition: border-top 0.3s, border-bottom 0.3s, border-left 0.3s, border-right 0.3s;
+}
+
+#main-container.border-left-wrong{
+  border-left: solid red 3px;
+}
+#main-container.border-right-wrong{
+  border-right: solid red 3px;
+}
+#main-container.border-top-wrong{
+  border-top: solid red 3px;
+}
+#main-container.border-top-wrong{
+  border-bottom:solid red 3px;
+}
+#cursor{
+  position:absolute;
+  top: 20px;
+  left: 20px;
+  width: 30px;
+  height: 30px;
+  background:white;
+  border-radius: 50%;
+  cursor: nesw-resize;
+  user-select: none;
+  transition:background 0.3s;
+}
+#cursor:hover{
+  background: #CC71AF;
+}
+#image{
+  position: absolute;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  bottom:0;
+  left:0;
+  border-top: dashed white 2px;
+  border-right: dashed white 2px;
+  background: rgba(255, 255, 255, 0.1);
+  color:white;
+  pointer-events: none;
+  transition: background 0.2s;
+}
+#image .score{
+background: rgba(76, 175, 80, 0.7);
+}
+	</style>
+</head>
+<body>
+<div id="main-container">
+  <div id="image">
+    <p id="score">0</p>
+  </div>
+  <div id="cursor"></div>
+</div>
+<div>
+  <p>Goal : <span id="reach"></span>m<sup>2</sup> --Actual:<span id="actual"></span>m<sup>2</sup>
+  </p>
+</div>
+<script type="text/javascript">
+	let container = document.getElementById("main-container")
+let cursor = document.getElementById("cursor")
+let image = document.getElementById("image")
+let reach = document.getElementById("reach")
+let actual = document.getElementById("actual")
+let maxAir, toReach, actualAir
+initGame()
+
+function initGame(){
+  maxAir = container.offsetWidth * container.offsetHeight
+  newGoal()
+}
+
+function newGoal(){
+  toReach = parseInt(Math.random()*maxAir)
+  reach.innerHTML = toReach
+}
+
+function calcActual(){
+  actualAir = parseInt(image.offsetWidth * image.offsetHeight)
+  actual.innerHTML = actualAir
+}
+image.style.height = container.offsetHeight - parseInt(cursor.offsetTop + (cursor.offsetHeight/2)) + "px"
+image.style.width = parseInt(cursor.offsetLeft + (cursor.offsetWidth/2)) + "px"
+calcActual()
+let isClicked = false
+
+cursor.addEventListener("mousedown", (e)=>{
+  isClicked = true
+})
+
+document.body.addEventListener("mousemove", (e)=>{
+  if(isClicked){
+    var rect = container.getBoundingClientRect()
+    var x = e.clientX - rect.left
+    var y = e.clientY - rect.top
+    
+    if(x < 0){
+      x = 0
+      container.classList.add("border-left-wrong")
+      setTimeout(() => {container.classList.remove("border-left-wrong")}, 600)
+    }
+    if(y < 0){
+      y = 0
+      container.classList.add("border-top-wrong")
+      setTimeout(() => {container.classList.remove("border-top-wrong")}, 600)
+    }
+    if(x > (container.offsetWidth)){
+      x = container.offsetWidth
+      container.classList.add("border-right-wrong")
+      setTimeout(() => {container.classList.remove("border-right-wrong")}, 600)
+    }
+    if(y > container.offsetHeight){
+      y = container.offsetHeight
+      container.classList.add("border-bottom-wrong")
+      setTimeout(() => {container.classList.remove("border-bottom-wrong")}, 600)
+    }
+    
+    cursor.style.left = (x - (cursor.offsetWidth/2)) + "px"
+    cursor.style.top = (y - (cursor.offsetHeight/2)) + "px"
+    
+    image.style.height = container.offsetHeight - y + "px"
+    image.style.width = x + "px"
+    calcActual()
+    if(toReach - 500 <= actualAir && toReach + 500 >= actualAir){
+      document.getElementById("score").innerHTML = parseInt(document.getElementById("score").innerHTML) + 1
+     newGoal() 
+      image.classList.add("score")
+      setTimeout(() => {image.classList.remove("score")}, 400)
+    }
+  }
+})
+
+document.body.addEventListener("mouseup", (e)=>{
+  isClicked = false
+})
+
+window.addEventListener("resize", initGame)
+
+
+//Learned from Rémi Rucojevic(https://codepen.io/RemiRuc/pen/ydoojx)
+</script>)
+</body>
+</html>
